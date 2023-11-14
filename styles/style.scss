@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
-
 $primary: #F24055;
 $secondary: #1E4F88;
 
@@ -8,7 +6,6 @@ $secondary: #1E4F88;
     height: 100%;
     .page-title {
         font-size: 2.5rem;
-        font-family: 'Potta One', sans-serif;
         // color: $secondary;
         margin-bottom: 30px;
         @media (max-width: 1700px) {
@@ -17,7 +14,6 @@ $secondary: #1E4F88;
     }
     .section-title {
         font-size: 4.5rem;
-        font-family: 'Potta One', sans-serif;
         color: $secondary;
         padding: 0 20px;
         @media (max-width: 1700px) {

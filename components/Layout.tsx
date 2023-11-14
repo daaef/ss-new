@@ -5,10 +5,18 @@ import { usePathname } from 'next/navigation';
 import { BioInfoTabIcon, ConfirmTabIcon, GoogleIcon, ImageTabIcon, NameTabIcon, SchoolTabIcon } from './svgs/icons';
 import { useAtom } from 'jotai';
 import { navigationAtom, pageAtom } from '@/store';
+import { Potta_One } from 'next/font/google';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
+
+const pottaOne = Potta_One({
+  subsets: ['latin'],
+  weight: [ '400']
+})
+
+
 const Layout =({children}: LayoutProps) => {
   const [navigation] = useAtom(navigationAtom)
   const [pageContent] = useAtom(pageAtom)
@@ -73,8 +81,8 @@ const Layout =({children}: LayoutProps) => {
               </div>
               <div className="relative h-screen hidden lg:order-1 order-2 lg:block">
                 <div className="section-header">
-                <h2 className="page-title">{content?.title}</h2>
-                    <h3 className="section-title">{content?.subTitle}</h3>
+                <h2 className={`page-title ${pottaOne.className}`}>{content?.title}</h2>
+                    <h3 className={`section-title ${pottaOne.className}`}>{content?.subTitle}</h3>
                 </div>
               </div>
           </div>

@@ -1,5 +1,6 @@
 "use client"
 import { states } from '@/app/(onboarding)/auth/data';
+import { AddCircleIcon } from '@/components/svgs/icons';
 import { lgasAtom, schoolRouteAtom } from "@/store";
 import { Input } from "@nextui-org/input";
 import { Link, Radio, RadioGroup, Select, SelectItem } from "@nextui-org/react";
@@ -7,7 +8,7 @@ import { useAtom } from "jotai";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function Login() {
+export default function School() {
 
   const [, setSelectedState] = useState("")
   const [lgas, setLgas] = useAtom(lgasAtom)
@@ -40,6 +41,7 @@ export default function Login() {
               placeholder="Example: John Hopkins University"
               description="Tell us the name of the school you attended or are currently attending. You have the option to add more schools below."
               name="name"
+              isRequired
               value={schoolData?.name}
               onChange={(e) => {
                 setSchoolData({
@@ -55,6 +57,14 @@ export default function Login() {
               label="What type of institution is it?"
               orientation="horizontal"
               isRequired
+              name='type'
+              value={schoolData?.type}
+              onChange={(e) => {
+                setSchoolData({
+                  ...schoolData,
+                  [e.currentTarget.name]: e.currentTarget.value,
+                });
+              }}
             >
               <Radio value="high-school">High School</Radio>
               <Radio value="sydney">Higher Institution</Radio>
@@ -72,6 +82,7 @@ export default function Login() {
                               onChange={handleState}
                               name="state"
                               isRequired
+                              defaultSelectedKeys={schoolData?.state}
                           >
                               {states.map((stat) => (
                                   <SelectItem key={stat.state} value={stat.state}>
@@ -87,6 +98,7 @@ export default function Login() {
                               className="max-w-xs selectShadowed"
                               onChange={handleLGA}
                               name="lga"
+                              defaultSelectedKeys={schoolData?.lga}
                               isRequired
                           >
                               {lgas.map((lga) => (
@@ -100,15 +112,49 @@ export default function Login() {
           </div>
           <div>
             <RadioGroup
-            className="w-full"
+              className="w-full"
               label="What is your status in reference to the school?"
               orientation="horizontal"
               isRequired
+              name='status'
+              value={schoolData?.status}
+              onChange={(e) => {
+                setSchoolData({
+                  ...schoolData,
+                  [e.currentTarget.name]: e.currentTarget.value,
+                });
+              }}
             >
               <Radio value="student">Student</Radio>
               <Radio value="alumnus-alumna">Alumnus/Alumna</Radio>
               <Radio value="other">Other</Radio>
             </RadioGroup>
+          </div>
+          <div>
+            <Input
+              type="text"
+              label="What do/did you study at the school?"
+              placeholder="Example: Electrical Engineering"
+              name="course"
+              value={schoolData?.course}
+              onChange={(e) => {
+                setSchoolData({
+                  ...schoolData,
+                  [e.currentTarget.name]: e.currentTarget.value,
+                });
+              }}
+            />
+          </div>
+          <div className='flex justify-center'>
+              <a
+                href="#"
+                className="btn-gradient unset-width pill outlined"
+              >
+                <div className="btn-container">
+                  <AddCircleIcon className="primary" />
+                  <span className="text-sm font-semibold leading-6 uppercase text-prim">Add School</span>
+                </div>
+              </a>
           </div>
 
         <div className="flex items-center justify-end">
@@ -120,7 +166,7 @@ export default function Login() {
         </div>
 
         <div>
-          <button onClick={()=> router.push('/auth/register/school')} className="btn-gradient">NEXT</button>
+          <button onClick={()=> router.push('/auth/register/bio-info')} className="btn-gradient">NEXT</button>
         </div>
       </form>
     </>

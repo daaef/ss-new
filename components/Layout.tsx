@@ -2,7 +2,7 @@
 import { navigationAtom, pageAtom } from "@/store";
 import { Image, Link } from "@nextui-org/react";
 import { useAtom } from "jotai";
-import { Potta_One } from "next/font/google";
+import { Potta_One, Rakkas, Sarina } from "next/font/google";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { GoogleIcon } from "./svgs/icons";
@@ -12,6 +12,16 @@ interface LayoutProps {
 }
 
 const pottaOne = Potta_One({
+	subsets: ["latin"],
+	weight: ["400"],
+});
+
+const rakkas = Rakkas({
+	subsets: ["latin"],
+	weight: ["400"],
+});
+
+const sarina = Sarina({
 	subsets: ["latin"],
 	weight: ["400"],
 });
@@ -97,10 +107,10 @@ const Layout = ({ children }: LayoutProps) => {
 				</div>
 				<div className='relative h-screen hidden lg:order-1 order-2 lg:block'>
 					<div className='section-header'>
-						<h2 className={`page-title ${pottaOne.className}`}>
+						<h2 className={`page-title ${sarina.className}`}>
 							{content?.title}
 						</h2>
-						<h3 className={`section-title ${pottaOne.className}`}>
+						<h3 className={`section-title ${rakkas.className}`}>
 							{content?.subTitle}
 						</h3>
 					</div>

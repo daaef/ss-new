@@ -59,7 +59,7 @@ const pageContent = [
 		route: "/auth/register",
 		title: "Create a new look",
 		subTitle:
-			"A Look is an account on SityWatch. When someone creates a Look, that person becomes a Sitizen of SityWatch. Use the progress bar to navigate between steps.",
+			"A Look is an account on ScoutSity. When someone creates a Look, that person becomes a Sitizen of ScoutSity. Use the progress bar to navigate between steps.",
 	},
 	{
 		route: "/auth/register/school",
@@ -83,7 +83,7 @@ const pageContent = [
 		route: "/auth/register/confirm",
 		title: "Create a new look",
 		subTitle:
-			"Cross check to make sure all the details are how you’d want them to be. Use the progress bar in navigating back to previous steps to make any changes. Welcome to SityWatch!",
+			"Cross check to make sure all the details are how you’d want them to be. Use the progress bar in navigating back to previous steps to make any changes. Welcome to ScoutSity!",
 	},
 ];
 const countries = [

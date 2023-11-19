@@ -65,7 +65,7 @@ const pageContent = [
 		route: "/auth/register/school",
 		title: "Create a new look",
 		subTitle:
-			"A school represents any institution where you received a formal education. It could bea high school, a college, a university, a polytechnic,an academy, etc.",
+			"A school represents any institution where you received a formal education. It could be a high school, a college, a university, a polytechnic,an academy, etc.",
 	},
 	{
 		route: "/auth/register/bio-info",

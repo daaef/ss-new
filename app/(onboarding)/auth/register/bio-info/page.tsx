@@ -164,7 +164,7 @@ export default function BioInfo() {
 				<div className='flex items-center justify-end'>
 					<div className='text-sm leading-6'>
 						<Link href='/auth/login' className='font-semibold text-sec'>
-							Already have an look?{" "}
+							Already have a look?{" "}
 							<span className='font-extrabold ml-2'>Login</span>
 						</Link>
 					</div>

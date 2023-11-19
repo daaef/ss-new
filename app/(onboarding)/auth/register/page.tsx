@@ -155,7 +155,7 @@ combination of letters and numbers, or anything you like, Just make it unique to
         <div className="flex items-center justify-end">
           <div className="text-sm leading-6">
             <Link href="/auth/login" className="font-semibold text-sec">
-              Already have an look? <span className="font-bold">Login</span>
+              Already have a look? <span className="font-bold">Login</span>
             </Link>
           </div>
         </div>

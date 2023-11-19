@@ -1,3 +1,4 @@
+import { states } from '@/app/(onboarding)/auth/data';
 import {
   BioInfoTabIcon,
   ConfirmTabIcon,
@@ -7,11 +8,21 @@ import {
 } from "@/components/svgs/icons";
 import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
-import { useAtom } from "jotai/index";
 
 export type INameData = {
   username: "string";
   handle: "string";
+  country: "string";
+  phoneNumber: "string";
+  password: "string";
+  confirm_password: "string";
+};
+export type ISchoolData = {
+  name: "string";
+  type: "string";
+  location: "string";
+  status: "string";
+  course: "string";
 };
 
 const navigation = [
@@ -21,6 +32,8 @@ const navigation = [
   { name: "Image", href: "/auth/register/image", icon: ImageTabIcon },
   { name: "Confirm", href: "/auth/register/confirm", icon: ConfirmTabIcon },
 ];
+
+const lgas : string[]= [];
 
 const pageContent = [
   {
@@ -69,10 +82,8 @@ const countries = [
 export const pageAtom = atom(pageContent);
 export const navigationAtom = atom(navigation);
 export const countriesAtom = atom(countries);
-export const nameRouteAtom = atomWithStorage("nameData", {});
-export const schoolRouteAtom = atomWithStorage("schoolData", {
-  hello: "world",
-});
+export const nameRouteAtom = atomWithStorage("nameData", {} as INameData);
+export const schoolRouteAtom = atomWithStorage("schoolData", {} as ISchoolData);
 export const bioInfoRouteAtom = atomWithStorage("bioInfoData", {
   hello: "world",
 });
@@ -80,3 +91,5 @@ export const imageRouteAtom = atomWithStorage("imageData", { hello: "world" });
 export const confirmRouteAtom = atomWithStorage("confirmData", {
   hello: "world",
 });
+export const lgasAtom = atom(lgas);
+export const statesAtom = atom(states);

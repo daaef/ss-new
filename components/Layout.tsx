@@ -1,11 +1,11 @@
 "use client"
-import React, { useEffect, useState } from 'react';
-import { Image, Link } from '@nextui-org/react';
-import { usePathname } from 'next/navigation';
-import { BioInfoTabIcon, ConfirmTabIcon, GoogleIcon, ImageTabIcon, NameTabIcon, SchoolTabIcon } from './svgs/icons';
-import { useAtom } from 'jotai';
 import { navigationAtom, pageAtom } from '@/store';
+import { Image, Link } from '@nextui-org/react';
+import { useAtom } from 'jotai';
 import { Potta_One } from 'next/font/google';
+import { usePathname } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { GoogleIcon } from './svgs/icons';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -51,7 +51,7 @@ const Layout =({children}: LayoutProps) => {
                       height={24}
                     />
                   </div>
-                  <div className="mt-10 w-full">
+                  <div className="pt-10 w-full form-holder">
                     <div>
                       {children}
                     </div>

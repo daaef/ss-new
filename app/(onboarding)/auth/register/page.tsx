@@ -1,13 +1,14 @@
 "use client";
-import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/button";
 import { EyeFilledIcon, EyeSlashFilledIcon } from "@/components/svgs/icons";
-import { useState } from "react";
-import { useAtom } from "jotai/index";
 import { countriesAtom, nameRouteAtom } from "@/store";
-import { Select, SelectItem } from "@nextui-org/react";
+import { Input } from "@nextui-org/input";
+import { Link, Select, SelectItem } from "@nextui-org/react";
+import { useAtom } from "jotai/index";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Register() {
+  const router = useRouter()
   const [countries] = useAtom(countriesAtom);
   const [nameData, setNameData] = useAtom(nameRouteAtom);
 
@@ -19,8 +20,7 @@ export default function Register() {
   const toggleVisibility2 = () => setIsVisible2(!isVisible2);
   return (
     <>
-      <form action="#" method="POST" className="space-y-6">
-        <div>
+      <form action="#" method="POST" className="grid gap-4">
           <div>
             <Input
               type="text"
@@ -37,9 +37,7 @@ export default function Register() {
               }}
             />
           </div>
-        </div>
-        <div>
-          <div className="mt-2">
+          <div>
             <Input
               type="text"
               label="How should we refer to you on ScoutSity?"
@@ -61,34 +59,24 @@ combination of letters and numbers, or anything you like, Just make it unique to
               }}
             />
           </div>
-        </div>
-        <div>
-          <div className="mt-2 addon-input">
+          <div className="addon-input">
             <Select
               items={countries}
               placeholder="Select an animal"
               className="max-w-xs addon-field selectShadowed"
-              label="Code"
-              selectedKeys={nameData?.code}
+              label="Country"
+              selectedKeys={nameData?.country}
+              name="code"
               onChange={(e) => {
                 setNameData({
                   ...nameData,
-                  code: e.target.value,
+                  [e.target.name]: e.target.value,
                 });
-              }}
-              renderValue={(items) => {
-                return items.map((item) => (
-                  <div key={item.key} className="flex items-center gap-2">
-                    <div className="flex flex-col">
-                      <span>{item?.data?.value}</span>
-                    </div>
-                  </div>
-                ));
               }}
             >
               {(country) => (
                 <SelectItem textValue={country.label} key={country.value}>
-                  {country.value}
+                  {country.label}
                 </SelectItem>
               )}
             </Select>
@@ -107,12 +95,25 @@ combination of letters and numbers, or anything you like, Just make it unique to
               }}
             />
           </div>
-        </div>
-
-        <div>
-          <div className="mt-2">
+          <div>
             <Input
-              label="Password"
+              type="email"
+              label="Email"
+              placeholder="Example: a@b.c"
+              description="It will not be public"
+              name="email"
+              value={nameData?.username}
+              onChange={(e) => {
+                setNameData({
+                  ...nameData,
+                  [e.currentTarget.name]: e.currentTarget.value,
+                });
+              }}
+            />
+          </div>
+          <div>
+            <Input
+              label="What should be your password?"
               placeholder="Enter your password"
               endContent={
                 <button
@@ -130,11 +131,9 @@ combination of letters and numbers, or anything you like, Just make it unique to
               type={isVisible ? "text" : "password"}
             />
           </div>
-        </div>
-        <div>
-          <div className="mt-2">
+          <div>
             <Input
-              label="Confirm Password"
+              label="Re-enter your password?"
               placeholder="Confirm your password"
               endContent={
                 <button
@@ -152,26 +151,19 @@ combination of letters and numbers, or anything you like, Just make it unique to
               type={isVisible2 ? "text" : "password"}
             />
           </div>
-        </div>
 
         <div className="flex items-center justify-end">
           <div className="text-sm leading-6">
-            <a href="#" className="font-semibold text-sec">
-              Already have an Look? <span className="font-bold">Login</span>
-            </a>
+            <Link href="/auth/login" className="font-semibold text-sec">
+              Already have an look? <span className="font-bold">Login</span>
+            </Link>
           </div>
         </div>
 
         <div>
-          <button className="btn-gradient">NEXT</button>
+          <button onClick={()=> router.push('/auth/register/school')} className="btn-gradient">NEXT</button>
         </div>
       </form>
-      <div className="mt-5 text-center text-sec">
-        <a href="#">
-          <span>New to ScoutSity?</span>{" "}
-          <span className="font-semibold">Create new Look</span>
-        </a>
-      </div>
     </>
   );
 }

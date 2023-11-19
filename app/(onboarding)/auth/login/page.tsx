@@ -4,6 +4,7 @@ import { Button } from "@nextui-org/button";
 import { EyeFilledIcon, EyeSlashFilledIcon } from "@/components/svgs/icons";
 import { useState } from "react";
 import Layout from "@/components/Layout";
+import { Link } from "@nextui-org/react";
 
 export default function Login() {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,7 +16,7 @@ export default function Login() {
         <div>
           <div>
             <Input
-              type="tel"
+              type="text"
               label="Phone Number"
               placeholder="Phone number, alias, or email address"
             />
@@ -58,10 +59,10 @@ export default function Login() {
         </div>
       </form>
       <div className="mt-5 text-center text-sec">
-        <a href="#">
+        <Link href="/auth/register">
           <span>New to ScoutSity?</span>{" "}
           <span className="font-semibold">Create new Look</span>
-        </a>
+        </Link>
       </div>
     </>
   );

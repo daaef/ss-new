@@ -225,3 +225,9 @@ $secondary: #1E4F88;
         }
     }
 }
+
+.addon-input {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    grid-gap: 15px;
+ }

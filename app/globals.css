@@ -10,3 +10,12 @@
 [data-slot="input-wrapper"]:hover {
     box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.25);
 }
+
+.selectShadowed [data-slot="mainWrapper"]  button{
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transition: .3s ease-in-out;
+}
+
+.selectShadowed [data-slot="mainWrapper"]:hover button {
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.25);
+}
